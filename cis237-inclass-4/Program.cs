@@ -1,6 +1,6 @@
 ﻿/// Author: Michael VanderMyde
 /// Course: CIS 237
-/// Inclass 3
+/// Inclass 4
 
 using System;
 
