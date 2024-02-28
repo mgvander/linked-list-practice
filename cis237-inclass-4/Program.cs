@@ -1,4 +1,8 @@
-﻿using System;
+﻿/// Author: Michael VanderMyde
+/// Course: CIS 237
+/// Inclass 3
+
+using System;
 
 namespace cis237_inclass_4
 {
@@ -6,7 +10,7 @@ namespace cis237_inclass_4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
