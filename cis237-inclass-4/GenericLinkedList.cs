@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace cis237_inclass_4
 {
-    class IntegerLinkedList : IIntegerLinkedList
+    internal class GenericLinkedList<Type> : IGenericLinkedList<Type>
     {
         // Make node class as an inner class
         protected class Node
-        {            
-            public int Data { get; set; }
+        {
+            public Type Data { get; set; }
             public Node Next { get; set; }
 
         }
@@ -44,7 +44,7 @@ namespace cis237_inclass_4
         }
 
         // This has a big O of O(1)
-        public void AddToBack(int IntegerData)
+        public void AddToBack(Type data)
         {
             // Make a pointer to the tail called oldTail
             Node oldTail = _tail;
@@ -53,7 +53,7 @@ namespace cis237_inclass_4
             _tail = new Node();
 
             // Asign the data and set the next pointer
-            _tail.Data = IntegerData;
+            _tail.Data = data;
             _tail.Next = null;
 
             // Check to see if the list is empty. If so, make the head
@@ -75,7 +75,7 @@ namespace cis237_inclass_4
         }
 
         // This has a big O of O(1)
-        public void AddToFront(int IntegerData)
+        public void AddToFront(Type data)
         {
             // Make a new variable to also reference the head of the ist
             Node oldHead = _head;
@@ -84,7 +84,7 @@ namespace cis237_inclass_4
             _head = new Node();
 
             // Set the data on the new node
-            _head.Data = IntegerData;
+            _head.Data = data;
 
             // Make the next property of the new node point to the old head
             _head.Next = oldHead;
@@ -97,13 +97,13 @@ namespace cis237_inclass_4
             if (_size == 1)
             {
                 _tail = _head;
-            }            
-
-        }           
+            }
+            
+        }
 
         // the big O for this is O(n)
         // Remove from the back is not as easy. It requires more work due to looping
-        public int RemoveFromBack()
+        public Type RemoveFromBack()
         {
             // Check for empty, throw exception if it is.
             if (IsEmpty)
@@ -113,7 +113,7 @@ namespace cis237_inclass_4
             }
 
             // Get the return data right off the bat.
-            int returnData = _tail.Data;
+            Type data = _tail.Data;
 
             // Check to see if we are on the last node
             // If so, we can just set the head and tail to null since we want
@@ -153,12 +153,12 @@ namespace cis237_inclass_4
             _size--;
 
             // Return the returnData
-            return returnData;
+            return data;
 
         }
 
         // This has a big O of O(1)
-        public int RemoveFromFront()
+        public Type RemoveFromFront()
         {
             // If it is empty throw an error
             if (IsEmpty)
@@ -168,7 +168,7 @@ namespace cis237_inclass_4
             }
 
             // Let's get the data to return
-            int returnData = _head.Data;
+            Type data = _head.Data;
 
             // Move the head pointer to the next in the list.
             _head = _head.Next;
@@ -184,7 +184,7 @@ namespace cis237_inclass_4
             _size--;
 
             // Return the returnData we pull out from the first node.
-            return returnData;
+            return data;
 
         }
 
